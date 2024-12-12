@@ -12,43 +12,223 @@
         android:id="@+id/boton_atras"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:src="@drawable/icono_flecha_atras"
-        android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/icono_flecha_atras"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/nombre_del_juego"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Recuerdín"
-        android:textSize="40sp"
-        android:textColor="@color/azulOscuro"
-        android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Recuerdín"
+        android:textColor="@color/azulOscuro"
+        android:textSize="30sp"
         app:layout_constraintStart_toEndOf="@id/boton_atras"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/logo"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:src="@drawable/logo_sin_fondo"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        android:src="@drawable/logo_sin_fondo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
-        android:layout_width="350dp"
-        android:layout_height="0dp"
-        app:layout_constraintDimensionRatio="2:1"
+        android:layout_width="300dp"
+        android:layout_height="500dp"
         app:cardCornerRadius="30dp"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="2:1"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-        
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/puntaje_titulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Puntaje"
+                android:textColor="@color/grisOscuro"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/foto_de_perfil_usuario"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="15dp"
+                android:background="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/puntaje_titulo" />
+
+            <TextView
+                android:id="@+id/nombre_usuario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PixelCrafter"
+                android:textSize="15sp"
+                android:fontFamily="sans-serif-black"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="30dp"
+                app:layout_constraintStart_toEndOf="@id/foto_de_perfil_usuario"
+                app:layout_constraintTop_toBottomOf="@id/puntaje_titulo" />
+
+            <TextView
+                android:id="@+id/correo_usuario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="pixelcrafter@gmail.com"
+                android:textSize="10sp"
+                android:textColor="@color/grisOscuro"
+                android:layout_marginStart="30dp"
+                app:layout_constraintTop_toBottomOf="@id/nombre_usuario"
+                app:layout_constraintStart_toEndOf="@id/foto_de_perfil_usuario"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/tiempo_total_jugado"
+                android:layout_width="200dp"
+                android:layout_height="60dp"
+                android:backgroundTint="@color/azulOscuro"
+                app:cardCornerRadius="50dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/foto_de_perfil_usuario">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/imagen_tiempo_total_jugado"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@color/black"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="5dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/texto_tiempo_total_jugado"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tiempo total jugado"
+                        android:textColor="@color/white"
+                        android:textSize="11sp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="5dp"
+                        app:layout_constraintStart_toEndOf="@id/imagen_tiempo_total_jugado"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/total_aciertos"
+                android:layout_width="200dp"
+                android:layout_height="60dp"
+                android:backgroundTint="@color/azulOscuro"
+                app:cardCornerRadius="50dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tiempo_total_jugado">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/imagen_total_aciertos"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@color/black"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="5dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/texto_total_aciertos"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total de aciertos"
+                        android:textColor="@color/white"
+                        android:textSize="11sp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="5dp"
+                        app:layout_constraintStart_toEndOf="@id/imagen_total_aciertos"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/total_incorrectos"
+                android:layout_width="200dp"
+                android:layout_height="60dp"
+                android:backgroundTint="@color/azulOscuro"
+                app:cardCornerRadius="50dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/total_aciertos">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/imagen_total_incorrectos"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@color/black"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="5dp"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/total_reinicios"
+                android:layout_width="200dp"
+                android:layout_height="60dp"
+                android:backgroundTint="@color/azulOscuro"
+                app:cardCornerRadius="50dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/total_incorrectos">
+
+                <ImageView
+                    android:id="@+id/imagen_total_reinicios"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@color/black"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="5dp"/>
+
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
