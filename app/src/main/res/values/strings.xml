@@ -12,4 +12,5 @@
     <string name="dato_ejemplo_total_aciertos">28</string>
     <string name="dato_ejemplo_total_incorrectos">5</string>
     <string name="dato_ejemplo_total_reinicios">15</string>
+    <string name="boton_cerrar_sesion">Cerrar Sesión</string>
 </resources>
