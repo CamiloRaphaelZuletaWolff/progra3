@@ -14,7 +14,6 @@ class SplashActivity : AppCompatActivity() {
         // Referenciar el VideoView
         val videoView = findViewById<VideoView>(R.id.videoView)
 
-        // Configurar la URI del video
         val videoUri = Uri.parse("android.resource://${packageName}/raw/splash")
         videoView.setVideoURI(videoUri)
 
