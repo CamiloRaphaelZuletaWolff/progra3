@@ -3,9 +3,12 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import com.example.sinnombre.DataClasses.PuntajeDB
 import com.example.sinnombre.PuntajeActivity
 
 class OperacionesPuntajeDBManager(context: Context) {
+
+    private val dbHelper: DatabaseHelper = DatabaseHelper(context)
 
     companion object {
         private const val DATABASE_VERSION = 1
@@ -19,12 +22,14 @@ class OperacionesPuntajeDBManager(context: Context) {
         private const val COLUMN_TOTAL_REINICIOS = "totalReinicios"
     }
 
-    private val dbHelper: DatabaseHelper = DatabaseHelper(context)
-
-    fun actualizarPuntaje(actividad: PuntajeActivity): Boolean {
+    fun crearPuntaje(puntaje: PuntajeDB): Boolean {
         val db = dbHelper.writableDatabase
         val values = ContentValues().apply {
-
+            put(COLUMN_TIEMPO_TOTAL_JUGADO, puntaje.idPuntaje)
+            put(COLUMN_TIEMPO_TOTAL_JUGADO, puntaje.tiempoTotalJugado)
+            put(COLUMN_TOTAL_ACIERTOS, puntaje.totalAciertos)
+            put(COLUMN_TOTAL_INCORRECTOS, puntaje.totalIncorrectos)
+            put(COLUMN_TOTAL_REINICIOS, puntaje.totalReinicios)
         }
 
         val newRowId = db.insert(TABLE_PUNTAJE, null, values)
@@ -40,7 +45,7 @@ class OperacionesPuntajeDBManager(context: Context) {
                     $COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT,
                     $COLUMN_TIEMPO_TOTAL_JUGADO TEXT NOT NULL,
                     $COLUMN_TOTAL_ACIERTOS TEXT NOT NULL,
-                    $COLUMN_TOTAL_INCORRECTOS TEXT NOT NULL,
+                    $COLUMN_TOTAL_INCORRECTOS TEXT,
                     $COLUMN_TOTAL_REINICIOS TEXT
                 );
             """.trimIndent()

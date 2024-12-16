@@ -1,9 +1,9 @@
 package com.example.sinnombre.SQLite
 import android.content.ContentValues
 import android.content.Context
-import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import com.example.sinnombre.DataClasses.PartidaDB
 
 class OperacionesPartidaDBManager(context: Context) {
 
@@ -26,10 +26,18 @@ class OperacionesPartidaDBManager(context: Context) {
         private const val COLUMN_ESTADO_NIVEL = "estadoNivel"
     }
 
-    fun crearPartida(partida: JuegoActivity): Boolean {
+    fun crearPartida(partida: PartidaDB): Boolean {
         val db = dbHelper.writableDatabase
         val values = ContentValues().apply {
-
+            put(COLUMN_NIVEL, partida.nivel)
+            put(COLUMN_TAMANO_MATRIZ, partida.nivel)
+            put(COLUMN_ACIERTOS, partida.aciertos)
+            put(COLUMN_INCORRECTOS, partida.incorrectos)
+            put(COLUMN_REINICIOS, partida.reinicios)
+            put(COLUMN_TIEMPO_ESTABLECIDO, partida.tiempoEstablecido)
+            put(COLUMN_TIEMPO_PARTIDA, partida.tiempoPartida)
+            put(COLUMN_CARTAS_TRAMPA, partida.cartasTrampa)
+            put(COLUMN_ESTADO_NIVEL, partida.estadoNivel)
         }
 
         val newRowId = db.insert(TABLE_PARTIDA, null, values)
@@ -44,11 +52,14 @@ class OperacionesPartidaDBManager(context: Context) {
                 CREATE TABLE $TABLE_PARTIDA (
                     $COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT,
                     $COLUMN_NIVEL TEXT NOT NULL,
-                    $COLUMN_TAMANO_MATRIZ TEXT,
-                    $COLUMN_ACIERTOS TEXT NOT NULL,
-                    $COLUMN_INCORRECTOS TEXT NOT NULL,
-                    $COLUMN_REINICIOS TEXT NOT NULL,
-                    $COLUMN_TIEMPO_ESTABLECIDO
+                    $COLUMN_TAMANO_MATRIZ TEXT NOT NULL,
+                    $COLUMN_ACIERTOS INTEGER NOT NULL,
+                    $COLUMN_INCORRECTOS INTEGER,
+                    $COLUMN_REINICIOS INTEGER,
+                    $COLUMN_TIEMPO_ESTABLECIDO TEXT NOT NULL,
+                    $COLUMN_TIEMPO_PARTIDA TEXT NOT NULL,
+                    $COLUMN_CARTAS_TRAMPA INTEGER,
+                    $COLUMN_ESTADO_NIVEL BOOLEAN NOT NULL
                 );
             """.trimIndent()
 
