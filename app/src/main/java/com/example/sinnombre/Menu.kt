@@ -6,16 +6,17 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.sinnombre.databinding.ActivityMainBinding
+import com.example.sinnombre.JuegoCartas.Companion.ID_PASO_DIFICULTAD
 import com.example.sinnombre.databinding.ActivityMenuBinding
 
-class MainActivity : AppCompatActivity() {
+class Menu : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
+
+    private lateinit var binding: ActivityMenuBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityMenuBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
         binding.prueba.setOnClickListener{
