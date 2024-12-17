@@ -1,6 +1,9 @@
 package com.example.sinnombre
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -15,25 +18,24 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityLoginBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
-        auth = Firebase.auth
+        setContentView(R.layout.activity_login)
 
-        binding.buttonLogin.setOnClickListener {
-            loginUsuario()
-        }
-    }
+        // Encuentra el TextView "Tengo una cuenta" por su ID
+        val tvTengoUnaCuenta = findViewById<TextView>(R.id.texto_tengo_una_cuenta)
 
-    fun loginUsuario(){
-        val password: String = binding.editPassword.text.toString()
-        val email: String = binding.editCorreo.text.toString()
-        auth.signInWithEmailAndPassword("email","password").addOnCompleteListener(this) {
-            respuesta -> if (respuesta.isSuccessful){
+        // Configura el listener para cambiar de actividad
+        tvTengoUnaCuenta.setOnClickListener {
+            val intent = Intent(this, IniciarSesionActivity::class.java)
+            startActivity(intent)}
 
-            } else {
 
-            }
+        // Encuentra el TextView "Tengo una cuenta" por su ID
+        val btnRegistrar = findViewById<Button>(R.id.botonRegistrar)
+
+        // Configura el listener para cambiar de actividad
+        btnRegistrar.setOnClickListener {
+            val intent = Intent(this, IniciarSesionActivity::class.java)
+            startActivity(intent)
         }
     }
 }

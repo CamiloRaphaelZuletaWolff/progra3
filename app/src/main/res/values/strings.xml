@@ -4,4 +4,11 @@
     <string name="hint_edit_text_correo">Correo electrónico</string>
     <string name="hint_edit_text_contrasena">Contraseña</string>
     <string name="texto_boton_iniciar_sesion">Ingresar</string>
+    <string name="titulo_crear_cuenta">Crear cuenta</string>
+    <string name="edit_text_nombre_completo">Nombre completo</string>
+    <string name="edit_text_correo_electronico">Correo electrónico</string>
+    <string name="edit_text_nueva_contrasena">Nueva contraseña</string>
+    <string name="edit_text_confirmar_contrasena">Confirmar contraseña</string>
+    <string name="texto_clickable_tengo_una_cuenta">Tengo una cuenta</string>
+    <string name="texto_boton_registrar">Registrar</string>
 </resources>
