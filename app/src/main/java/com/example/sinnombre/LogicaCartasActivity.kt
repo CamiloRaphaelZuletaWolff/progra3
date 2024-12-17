@@ -16,6 +16,7 @@ class LogicaCartasActivity : AppCompatActivity() {
     var filaActual : Int  = 0
     var columnaActual : Int = 0
     var mapa : Array<IntArray> = arrayOf()
+    val vistaAnterior : View? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,15 +27,17 @@ class LogicaCartasActivity : AppCompatActivity() {
         mapa = crearMapa(2,3)
         val botones = listOf(binding.Pos00,binding.Pos01,binding.Pos02,binding.Pos10,binding.Pos11,binding.Pos12)
         val listener = View.OnClickListener { view ->
+            val fila = obtenerFila(resources.getResourceEntryName(view.id))
+            val columna =obtenerColumna(resources.getResourceEntryName(view.id))
             if(contador%2==0){
                 view.setBackgroundColor(Color.RED)
-                filaActual = obtenerFila(view.id.toString())
-                columnaActual = obtenerColumna(view.id.toString())
+                filaActual = fila
+                columnaActual = columna
                 contador++
             }else {
                 contador++
                 view.setBackgroundColor(Color.GREEN)
-                if (mapa[filaActual][columnaActual]==mapa[obtenerFila(view.id.toString())][obtenerColumna(view.id.toString())]){
+                if (mapa[filaActual][columnaActual]==mapa[fila][columna]){
                     //Son la misma carta
                     view.setBackgroundColor(Color.GREEN)
                 }else{
@@ -46,9 +49,9 @@ class LogicaCartasActivity : AppCompatActivity() {
         }
         botones.forEach { imageButton ->
             imageButton.setOnClickListener(listener)
-        }
+        }}
 
-    }
+
 
     fun obtenerFila(id : String) : Int {
         return id[id.length - 2].toString().toInt()
