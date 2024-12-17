@@ -26,23 +26,63 @@ class OperacionesPartidaDBManager(context: Context) {
         private const val COLUMN_ESTADO_NIVEL = "estadoNivel"
     }
 
-    fun crearPartida(partida: PartidaDB): Boolean {
+    fun crearPartida(partida: PartidaDB): Long {
         val db = dbHelper.writableDatabase
         val values = ContentValues().apply {
             put(COLUMN_NIVEL, partida.nivel)
-            put(COLUMN_TAMANO_MATRIZ, partida.nivel)
-            put(COLUMN_ACIERTOS, partida.aciertos)
-            put(COLUMN_INCORRECTOS, partida.incorrectos)
-            put(COLUMN_REINICIOS, partida.reinicios)
+            put(COLUMN_TAMANO_MATRIZ, partida.tamanoMatriz)
             put(COLUMN_TIEMPO_ESTABLECIDO, partida.tiempoEstablecido)
-            put(COLUMN_TIEMPO_PARTIDA, partida.tiempoPartida)
-            put(COLUMN_CARTAS_TRAMPA, partida.cartasTrampa)
-            put(COLUMN_ESTADO_NIVEL, partida.estadoNivel)
         }
 
         val newRowId = db.insert(TABLE_PARTIDA, null, values)
-        return newRowId != -1L
+        db.close()
+        return newRowId
     }
+
+    fun guardarPartida(
+        id: Long,
+        aciertos: Int,
+        incorrectos: Int,
+        reinicios: Int,
+        tiempoPartida: String,
+        cartasTrampa: Int,
+        estadoNivel: Boolean
+    ): Boolean {
+        val db = dbHelper.writableDatabase
+        val values = ContentValues().apply {
+            put(COLUMN_ACIERTOS, aciertos)
+            put(COLUMN_INCORRECTOS, incorrectos)
+            put(COLUMN_REINICIOS, reinicios)
+            put(COLUMN_TIEMPO_PARTIDA, tiempoPartida)
+            put(COLUMN_CARTAS_TRAMPA, cartasTrampa)
+            put(COLUMN_ESTADO_NIVEL, estadoNivel)
+        }
+
+        val rowsAffected = db.update(
+            TABLE_PARTIDA,
+            values,
+            "$COLUMN_ID = ?",
+            arrayOf(id.toString())
+        )
+        db.close()
+        return rowsAffected > 0
+    }
+
+    fun eliminarTodasLasPartidas(): Boolean {
+        val db = dbHelper.writableDatabase
+        return try {
+            db.delete(TABLE_PARTIDA, null, null) // Elimina todos los registros
+            true
+        } catch (e: Exception) {
+            e.printStackTrace()
+            false
+        } finally {
+            db.close()
+        }
+    }
+
+
+
 
     private class DatabaseHelper(context: Context) :
         SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
