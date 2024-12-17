@@ -49,7 +49,24 @@ class OperacionesPartidaDBManager(context: Context) {
         estadoNivel: Boolean
     ): Boolean {
         val db = dbHelper.writableDatabase
-        val values = ContentValues().apply {
+        val cursor = db.rawQuery("SELECT * FROM $TABLE_PARTIDA WHERE $COLUMN_ID = ?", arrayOf(id.toString()))
+        var partidaExistente: ContentValues? = null
+
+        if (cursor.moveToFirst()) {
+            partidaExistente = ContentValues().apply {
+                put(COLUMN_NIVEL, cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NIVEL)))
+                put(COLUMN_TAMANO_MATRIZ, cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TAMANO_MATRIZ)))
+                put(COLUMN_TIEMPO_ESTABLECIDO, cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TIEMPO_ESTABLECIDO)))
+            }
+        }
+        cursor.close()
+
+        if (partidaExistente == null) {
+            db.close()
+            return false
+        }
+
+        partidaExistente.apply {
             put(COLUMN_ACIERTOS, aciertos)
             put(COLUMN_INCORRECTOS, incorrectos)
             put(COLUMN_REINICIOS, reinicios)
@@ -60,29 +77,14 @@ class OperacionesPartidaDBManager(context: Context) {
 
         val rowsAffected = db.update(
             TABLE_PARTIDA,
-            values,
+            partidaExistente,
             "$COLUMN_ID = ?",
             arrayOf(id.toString())
         )
+
         db.close()
         return rowsAffected > 0
     }
-
-    fun eliminarTodasLasPartidas(): Boolean {
-        val db = dbHelper.writableDatabase
-        return try {
-            db.delete(TABLE_PARTIDA, null, null) // Elimina todos los registros
-            true
-        } catch (e: Exception) {
-            e.printStackTrace()
-            false
-        } finally {
-            db.close()
-        }
-    }
-
-
-
 
     private class DatabaseHelper(context: Context) :
         SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
