@@ -21,7 +21,7 @@ class IniciarSesionActivity : AppCompatActivity() {
         auth = Firebase.auth
 
         binding.textoNoTengoCuenta.setOnClickListener{
-            val intent = Intent(this, LoginActivity::class.java)
+            val intent = Intent(this, CrearCuentaActivity::class.java)
             startActivity(intent)
         }
 

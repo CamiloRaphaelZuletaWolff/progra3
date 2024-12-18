@@ -16,7 +16,7 @@
             android:name=".PantallaDeJuegoActivity"
             android:exported="false"/>
         <activity
-            android:name=".LoginActivity"
+            android:name=".CrearCuentaActivity"
             android:exported="true"/>
         <activity
             android:name=".IniciarSesionActivity"
