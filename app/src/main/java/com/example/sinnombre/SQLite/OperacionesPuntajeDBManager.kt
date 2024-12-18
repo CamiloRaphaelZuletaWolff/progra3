@@ -25,7 +25,7 @@ class OperacionesPuntajeDBManager(context: Context) {
     fun crearPuntaje(puntaje: PuntajeDB): Boolean {
         val db = dbHelper.writableDatabase
         val values = ContentValues().apply {
-            put(COLUMN_TIEMPO_TOTAL_JUGADO, puntaje.idPuntaje)
+            put(COLUMN_ID, puntaje.idPuntaje)
             put(COLUMN_TIEMPO_TOTAL_JUGADO, puntaje.tiempoTotalJugado)
             put(COLUMN_TOTAL_ACIERTOS, puntaje.totalAciertos)
             put(COLUMN_TOTAL_INCORRECTOS, puntaje.totalIncorrectos)
@@ -35,6 +35,22 @@ class OperacionesPuntajeDBManager(context: Context) {
         val newRowId = db.insert(TABLE_PUNTAJE, null, values)
         return newRowId != -1L
     }
+
+    fun actualizarTiempoTotalJugado(partidaManager: OperacionesPartidaDBManager): Boolean {
+        val db = dbHelper.writableDatabase
+
+        val tiempoTotalJugado = partidaManager.obtenerTiempoTotal()
+
+        val values = ContentValues().apply {
+            put(COLUMN_TIEMPO_TOTAL_JUGADO, tiempoTotalJugado)
+        }
+
+        val rowsUpdated = db.update(TABLE_PUNTAJE, values, null, null)
+        db.close()
+
+        return rowsUpdated > 0
+    }
+
 
     private class DatabaseHelper(context: Context) :
         SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {

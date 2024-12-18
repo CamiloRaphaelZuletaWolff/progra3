@@ -86,6 +86,33 @@ class OperacionesPartidaDBManager(context: Context) {
         return rowsAffected > 0
     }
 
+    fun obtenerTiempoTotal(): String {
+        val db = dbHelper.readableDatabase
+        val cursor = db.rawQuery("SELECT $COLUMN_TIEMPO_PARTIDA FROM $TABLE_PARTIDA", null)
+
+        var totalSeconds = 0
+        if (cursor.moveToFirst()) {
+            do {
+                val tiempo = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TIEMPO_PARTIDA))
+                val parts = tiempo.split(":").map { it.toInt() }
+                val horas = parts[0]
+                val minutos = parts[1]
+                val segundos = parts[2]
+
+                totalSeconds += horas * 3600 + minutos * 60 + segundos
+            } while (cursor.moveToNext())
+        }
+        cursor.close()
+        db.close()
+
+        val horas = totalSeconds / 3600
+        val minutos = (totalSeconds % 3600) / 60
+        val segundos = totalSeconds % 60
+
+        return String.format("%02d:%02d:%02d", horas, minutos, segundos)
+    }
+
+
     private class DatabaseHelper(context: Context) :
         SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
