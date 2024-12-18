@@ -12,32 +12,31 @@ import com.example.sinnombre.databinding.ActivitySplashBinding
 class SplashActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySplashBinding
 
-        override fun onCreate(savedInstanceState: Bundle?) {
-            super.onCreate(savedInstanceState)
-            binding = ActivitySplashBinding.inflate(layoutInflater)
-            setContentView(binding.root)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivitySplashBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-            val videoView = binding.videoView
+        val videoView = binding.videoView
 
-            val videoUri = Uri.parse("android.resource://${packageName}/raw/gif")
-            videoView.setVideoURI(videoUri)
-
-
-            val mediaController = MediaController(this)
-            mediaController.setAnchorView(videoView)
-            videoView.setMediaController(mediaController)
+        val videoUri = Uri.parse("android.resource://${packageName}/raw/gif")
+        videoView.setVideoURI(videoUri)
 
 
-            videoView.setOnPreparedListener { mediaPlayer ->
-                mediaPlayer.isLooping = false
-                videoView.start()
+        val mediaController = MediaController(this)
+        mediaController.setAnchorView(videoView)
+        videoView.setMediaController(mediaController)
 
-            }
-            Handler(Looper.getMainLooper()).postDelayed({
-                val intent = Intent(this, PantallaDeInicioActivity::class.java)
-                startActivity(intent)
-                finish()
-            }, 5000)
+
+        videoView.setOnPreparedListener { mediaPlayer ->
+            mediaPlayer.isLooping = false
+            videoView.start()
+
         }
+        Handler(Looper.getMainLooper()).postDelayed({
+            val intent = Intent(this, PantallaDeInicioActivity::class.java)
+            startActivity(intent)
+            finish()
+        }, 5000)
     }
-
+}

@@ -25,7 +25,7 @@
             android:name=".JuegoCartas"
             android:exported="false"/>
         <activity
-            android:name=".LogicaCartasActivity"
+            android:name=".PantallaDeJuegoActivity"
             android:exported="false"/>
         <activity
             android:name=".LoginActivity"
