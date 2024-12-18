@@ -40,7 +40,7 @@ class PuntajeActivity : AppCompatActivity() {
         actualizarYMostrarDatosPuntaje()
     }
 
-    fun inicializarPuntaje() {
+    private fun inicializarPuntaje() {
         val puntajeInicial = PuntajeDB(
             idPuntaje = 0,
             tiempoTotalJugado = "0",
@@ -51,7 +51,7 @@ class PuntajeActivity : AppCompatActivity() {
         sqlManager.crearPuntaje(puntajeInicial)
     }
 
-    fun actualizarYMostrarDatosPuntaje() {
+    private fun actualizarYMostrarDatosPuntaje() {
         // Actualizar y mostrar los datos del tiempo total jugado
         sqlManager.actualizarTiempoTotalJugado()
         val tiempoTotal = sqlManager.obtenerTiempoTotal()
