@@ -1,22 +1,36 @@
 package com.example.sinnombre
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.sinnombre.databinding.ActivityPantalladeinicioBinding
+import com.example.sinnombre.databinding.ActivityPuntajeBinding
 
 class PantallaDeInicioActivity : AppCompatActivity() {
-    @SuppressLint("MissingInflatedId")
+
+    private lateinit var binding: ActivityPantalladeinicioBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_pantalladeinicio)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        binding = ActivityPantalladeinicioBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+//
+//        binding.botonJugar.setOnClickListener {
+//            val intent = Intent(this, PantallaDeJuegoActivity::class.java)
+//            startActivity(intent)
+//        }
+
+        binding.botonPerfil.setOnClickListener {
+            val intent = Intent(this, PerfilActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.botonPuntaje.setOnClickListener {
+            val intent = Intent(this, PuntajeActivity::class.java)
+            startActivity(intent)
         }
     }
 }

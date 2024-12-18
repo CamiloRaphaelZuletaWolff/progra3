@@ -24,4 +24,5 @@
     <string name="dato_ejemplo_total_incorrectos">5</string>
     <string name="dato_ejemplo_total_reinicios">15</string>
     <string name="boton_cerrar_sesion">Cerrar Sesión</string>
+    <string name="texto_clickable_no_tengo_una_cuenta">No tengo una cuenta</string>
 </resources>
