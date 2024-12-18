@@ -4,7 +4,6 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import com.example.sinnombre.DataClasses.PuntajeDB
-import com.example.sinnombre.PuntajeActivity
 
 class OperacionesPuntajeDBManager(context: Context) {
 
@@ -25,7 +24,6 @@ class OperacionesPuntajeDBManager(context: Context) {
     fun crearPuntaje(puntaje: PuntajeDB): Boolean {
         val db = dbHelper.writableDatabase
         val values = ContentValues().apply {
-            put(COLUMN_ID, puntaje.idPuntaje)
             put(COLUMN_TIEMPO_TOTAL_JUGADO, puntaje.tiempoTotalJugado)
             put(COLUMN_TOTAL_ACIERTOS, puntaje.totalAciertos)
             put(COLUMN_TOTAL_INCORRECTOS, puntaje.totalIncorrectos)
@@ -33,8 +31,10 @@ class OperacionesPuntajeDBManager(context: Context) {
         }
 
         val newRowId = db.insert(TABLE_PUNTAJE, null, values)
+        db.close()
         return newRowId != -1L
     }
+
 
     fun actualizarTiempoTotalJugado(partidaManager: OperacionesPartidaDBManager): Boolean {
         val db = dbHelper.writableDatabase
@@ -43,6 +43,51 @@ class OperacionesPuntajeDBManager(context: Context) {
 
         val values = ContentValues().apply {
             put(COLUMN_TIEMPO_TOTAL_JUGADO, tiempoTotalJugado)
+        }
+
+        val rowsUpdated = db.update(TABLE_PUNTAJE, values, null, null)
+        db.close()
+
+        return rowsUpdated > 0
+    }
+
+    fun actualizarTotalAciertos(partidaManager: OperacionesPartidaDBManager): Boolean {
+        val db = dbHelper.writableDatabase
+
+        val totalAciertos = partidaManager.obtenerTotalAciertos()
+
+        val values = ContentValues().apply {
+            put(COLUMN_TOTAL_ACIERTOS, totalAciertos)
+        }
+
+        val rowsUpdated = db.update(TABLE_PUNTAJE, values, null, null)
+        db.close()
+
+        return rowsUpdated > 0
+    }
+
+    fun actualizarTotalIncorrectos(partidaManager: OperacionesPartidaDBManager): Boolean {
+        val db = dbHelper.writableDatabase
+
+        val totalIncorrectos = partidaManager.obtenerTotalIncorrectos()
+
+        val values = ContentValues().apply {
+            put(COLUMN_TOTAL_INCORRECTOS, totalIncorrectos)
+        }
+
+        val rowsUpdated = db.update(TABLE_PUNTAJE, values, null, null)
+        db.close()
+
+        return rowsUpdated > 0
+    }
+
+    fun actualizarTotalReinicios(partidaManager: OperacionesPartidaDBManager): Boolean {
+        val db = dbHelper.writableDatabase
+
+        val totalReinicios = partidaManager.obtenerTotalReinicios()
+
+        val values = ContentValues().apply {
+            put(COLUMN_TOTAL_REINICIOS, totalReinicios)
         }
 
         val rowsUpdated = db.update(TABLE_PUNTAJE, values, null, null)

@@ -39,17 +39,9 @@ class OperacionesPartidaDBManager(context: Context) {
         return newRowId
     }
 
-    fun guardarPartida(
-        id: Long,
-        aciertos: Int,
-        incorrectos: Int,
-        reinicios: Int,
-        tiempoPartida: String,
-        cartasTrampa: Int,
-        estadoNivel: Boolean
-    ): Boolean {
+    fun guardarPartida(partida: PartidaDB): Boolean {
         val db = dbHelper.writableDatabase
-        val cursor = db.rawQuery("SELECT * FROM $TABLE_PARTIDA WHERE $COLUMN_ID = ?", arrayOf(id.toString()))
+        val cursor = db.rawQuery("SELECT * FROM $TABLE_PARTIDA WHERE $COLUMN_ID = ?", arrayOf(partida.idPartida.toString()))
         var partidaExistente: ContentValues? = null
 
         if (cursor.moveToFirst()) {
@@ -67,19 +59,19 @@ class OperacionesPartidaDBManager(context: Context) {
         }
 
         partidaExistente.apply {
-            put(COLUMN_ACIERTOS, aciertos)
-            put(COLUMN_INCORRECTOS, incorrectos)
-            put(COLUMN_REINICIOS, reinicios)
-            put(COLUMN_TIEMPO_PARTIDA, tiempoPartida)
-            put(COLUMN_CARTAS_TRAMPA, cartasTrampa)
-            put(COLUMN_ESTADO_NIVEL, estadoNivel)
+            put(COLUMN_ACIERTOS, partida.aciertos)
+            put(COLUMN_INCORRECTOS, partida.incorrectos)
+            put(COLUMN_REINICIOS, partida.reinicios)
+            put(COLUMN_TIEMPO_PARTIDA, partida.tiempoPartida)
+            put(COLUMN_CARTAS_TRAMPA, partida.cartasTrampa)
+            put(COLUMN_ESTADO_NIVEL, partida.estadoNivel)
         }
 
         val rowsAffected = db.update(
             TABLE_PARTIDA,
             partidaExistente,
             "$COLUMN_ID = ?",
-            arrayOf(id.toString())
+            arrayOf(partida.idPartida.toString())
         )
 
         db.close()
@@ -110,6 +102,51 @@ class OperacionesPartidaDBManager(context: Context) {
         val segundos = totalSeconds % 60
 
         return String.format("%02d:%02d:%02d", horas, minutos, segundos)
+    }
+
+    fun obtenerTotalAciertos(): Int {
+        val db = dbHelper.readableDatabase
+        val cursor = db.rawQuery("SELECT SUM($COLUMN_ACIERTOS) AS TotalAciertos FROM $TABLE_PARTIDA", null)
+
+        var totalAciertos = 0
+        if (cursor.moveToFirst()) {
+            totalAciertos = cursor.getInt(cursor.getColumnIndexOrThrow("TotalAciertos"))
+        }
+
+        cursor.close()
+        db.close()
+
+        return totalAciertos
+    }
+
+    fun obtenerTotalIncorrectos(): Int {
+        val db = dbHelper.readableDatabase
+        val cursor = db.rawQuery("SELECT SUM($COLUMN_INCORRECTOS) AS TotalIncorrectos FROM $TABLE_PARTIDA", null)
+
+        var totalIncorrectos = 0
+        if (cursor.moveToFirst()) {
+            totalIncorrectos = cursor.getInt(cursor.getColumnIndexOrThrow("TotalIncorrectos"))
+        }
+
+        cursor.close()
+        db.close()
+
+        return totalIncorrectos
+    }
+
+    fun obtenerTotalReinicios(): Int {
+        val db = dbHelper.readableDatabase
+        val cursor = db.rawQuery("SELECT SUM($COLUMN_REINICIOS) AS TotalReinicios FROM $TABLE_PARTIDA", null)
+
+        var totalReinicios = 0
+        if (cursor.moveToFirst()) {
+            totalReinicios = cursor.getInt(cursor.getColumnIndexOrThrow("TotalReinicios"))
+        }
+
+        cursor.close()
+        db.close()
+
+        return totalReinicios
     }
 
 
