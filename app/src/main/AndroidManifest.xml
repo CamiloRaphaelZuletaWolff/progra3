@@ -13,28 +13,41 @@
         android:theme="@style/Theme.SinNombre"
         tools:targetApi="31">
         <activity
-            android:name=".PantallaDeInicioActivity"
-            android:exported="true" />
+            android:name=".RecyclerFormulario"
+            android:exported="false"/>
+        <activity
+            android:name=".PantallaEstiloFormulario"
+            android:exported="false"/>
+        <activity
+            android:name=".Menu"
+            android:exported="false"/>
+        <activity
+            android:name=".JuegoCartas"
+            android:exported="false"/>
+        <activity
+            android:name=".LogicaCartasActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true"/>
         <activity
             android:name=".IniciarSesionActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".PantallaDeInicioActivity"
             android:exported="true"/>
-
         <activity
             android:name=".SplashActivity"
-            android:exported="true" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true"/>
-
+            android:exported="false"/>
     </application>
 
 </manifest>
