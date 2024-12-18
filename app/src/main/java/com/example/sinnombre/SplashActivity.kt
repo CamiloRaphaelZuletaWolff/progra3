@@ -1,32 +1,43 @@
 package com.example.sinnombre
+
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.widget.MediaController
-import android.widget.VideoView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.sinnombre.databinding.ActivitySplashBinding
 
 class SplashActivity : AppCompatActivity() {
+    private lateinit var binding: ActivitySplashBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        override fun onCreate(savedInstanceState: Bundle?) {
+            super.onCreate(savedInstanceState)
+            binding = ActivitySplashBinding.inflate(layoutInflater)
+            setContentView(binding.root)
 
-        // Referenciar el VideoView
-        val videoView = findViewById<VideoView>(R.id.videoView)
+            val videoView = binding.videoView
 
-        // Configurar la URI del video
-        val videoUri = Uri.parse("android.resource://${packageName}/raw/splash")
-        videoView.setVideoURI(videoUri)
+            val videoUri = Uri.parse("android.resource://${packageName}/raw/gif")
+            videoView.setVideoURI(videoUri)
 
-        // Agregar controles al video (opcional)
-        val mediaController = MediaController(this)
-        mediaController.setAnchorView(videoView)
-        videoView.setMediaController(mediaController)
 
-        // Configurar el VideoView para que reproduzca automáticamente
-        videoView.setOnPreparedListener { mediaPlayer ->
-            mediaPlayer.isLooping = true // (Opcional) Hace que el video se repita automáticamente
-            videoView.start() // Inicia la reproducción automáticamente
+            val mediaController = MediaController(this)
+            mediaController.setAnchorView(videoView)
+            videoView.setMediaController(mediaController)
+
+
+            videoView.setOnPreparedListener { mediaPlayer ->
+                mediaPlayer.isLooping = false
+                videoView.start()
+
+            }
+            Handler(Looper.getMainLooper()).postDelayed({
+                val intent = Intent(this, PantallaDeInicioActivity::class.java)
+                startActivity(intent)
+                finish()
+            }, 5000)
         }
     }
-}
+
