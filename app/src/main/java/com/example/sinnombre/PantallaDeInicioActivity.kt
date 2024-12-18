@@ -12,12 +12,22 @@ class PantallaDeInicioActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPantalladeinicioBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
-        binding.botonJugar.setOnClickListener{
-            val intentJuegoCartas = Intent(this, PantallaDeJuegoActivity::class.java)
-//            intentJuegoCartas.putExtra(ID_PASO_DIFICULTAD,9)
-            startActivity(intentJuegoCartas)
+        setContentView(binding.root)
+
+        binding.botonJugar.setOnClickListener {
+            val intent = Intent(this, PantallaDeJuegoActivity::class.java)
+            //intentJuegoCartas.putExtra(ID_PASO_DIFICULTAD,9)
+            startActivity(intent)
+        }
+
+        binding.botonPerfil.setOnClickListener {
+            val intent = Intent(this, PerfilActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.botonPuntaje.setOnClickListener {
+            val intent = Intent(this, PuntajeActivity::class.java)
+            startActivity(intent)
         }
     }
 }

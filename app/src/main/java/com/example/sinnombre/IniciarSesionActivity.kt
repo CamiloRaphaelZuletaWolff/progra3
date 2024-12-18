@@ -20,6 +20,11 @@ class IniciarSesionActivity : AppCompatActivity() {
         FirebaseApp.initializeApp(this)
         auth = Firebase.auth
 
+        binding.textoNoTengoCuenta.setOnClickListener{
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
+
         binding.botonIniciarSesion.setOnClickListener {
             iniciarSesion(
                 binding.editTextCorreo.text.toString(),
