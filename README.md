@@ -39,7 +39,7 @@ Espera a que el proceso de sincronización termine. Si aparecen errores, sigue l
 
 OJO: si sale error en el gradle implementar google-services.json:
 
-[Uploading google-services.json{
+[Uploading googl{
   "project_info": {
     "project_number": "383851007435",
     "project_id": "recuerdin-65394",
@@ -67,9 +67,10 @@ OJO: si sale error en el gradle implementar google-services.json:
     }
   ],
   "configuration_version": "1"
-}…]()
+}e-services.json…]()
 
 
+[google-services.json](https://github.com/user-attachments/files/18192218/google-services.json)
 
 En este espacio:
 ![2153b06e-9aed-467f-8a06-3496f9134417](https://github.com/user-attachments/assets/67d314e6-94dd-42d8-941e-f9edef0ba3ef)
