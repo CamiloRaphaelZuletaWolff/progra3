@@ -22,5 +22,13 @@ class PerfilActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityPerfilBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val email = intent.getStringExtra("email")
+
+        binding.correoUsuario.text = email ?: "Correo no recibido"
+
+        binding.botonCerrarSesion.setOnClickListener {
+            finish()
+        }
     }
 }
