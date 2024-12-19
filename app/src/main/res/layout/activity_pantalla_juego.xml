@@ -30,6 +30,7 @@
         android:textColor="@color/black"/>
 
     <TextView
+        android:id="@+id/cronometro"
         android:layout_width="0dp"
         android:layout_height="50dp"
         app:layout_constraintStart_toEndOf="@+id/vertical_60"

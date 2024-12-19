@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Color
 import kotlinx.coroutines.*
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.os.Handler
 import android.os.Looper
 import android.view.View
@@ -28,9 +29,10 @@ class PantallaDeJuegoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityPantallaJuegoBinding.inflate(layoutInflater)
         val view1 = binding.root
+        setContentView(view1)
         val cantidadFilas = 3
         val cantidadColumnas = 2
-        setContentView(view1)
+        iniciarCronometro(30000)
         mapa = crearMapa(cantidadFilas, cantidadColumnas)
         val visitados = Array(cantidadFilas) { BooleanArray(cantidadColumnas) }
         val botones = listOf(
@@ -79,11 +81,6 @@ class PantallaDeJuegoActivity : AppCompatActivity() {
         val listener = View.OnClickListener { view ->
             val fila = obtenerFila(resources.getResourceEntryName(view.id))
             val columna = obtenerColumna(resources.getResourceEntryName(view.id))
-            //Carta Trampa
-            if(mapa[fila][columna]==29){
-                visitados[fila][columna] = true
-                view.visibility = View.GONE
-            }
             if (contador % 2 == 0) {
                 if (!visitados[fila][columna]) {
                     cambiarImagen(view,fila,columna)
@@ -201,6 +198,20 @@ class PantallaDeJuegoActivity : AppCompatActivity() {
     }
 
 
+    fun iniciarCronometro(tiempo: Long) {
+        object : CountDownTimer(tiempo, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                binding.cronometro.text = " ${millisUntilFinished / 1000}"
+            }
+
+            override fun onFinish() {
+                val intent = Intent(this@PantallaDeJuegoActivity, PantallaPerderActivity::class.java)
+                startActivity(intent)
+            }
+        }.start()
+    }
+
+
     fun obtenerFila(id: String): Int {
         return id[id.length - 2].toString().toInt()
     }
@@ -212,12 +223,10 @@ class PantallaDeJuegoActivity : AppCompatActivity() {
     fun crearMapa(filas: Int, columnas: Int): Array<IntArray> {
         val maxNumero = (filas * columnas) / 2
         val numeros = mutableListOf<Int>()
-        for (num in 1 until maxNumero) {
+        for (num in 1 .. maxNumero) {
             numeros.add(num)
             numeros.add(num)
         }
-        numeros.add(29)
-        numeros.add(29)
         numeros.shuffle()
         val matriz = Array(filas) { IntArray(columnas) }
         var index = 0
