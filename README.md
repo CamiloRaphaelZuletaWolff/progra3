@@ -92,16 +92,45 @@ Conecta un dispositivo Android o inicia un emulador desde Android Studio.
 Haz clic en el botón Run (el ícono de play) en la barra de herramientas.
 
 
-
 # Instrucciones para el uso de la aplicación
 
-1. Espera a que termine el splash inicial.
-2. Inicia sesión. Si aún no tienes una cuenta, dirígete a la sección **NO TENGO CUENTA**.
-3. Registra una cuenta válida e inicia sesión.
-4. Presiona el ícono de **play** para comenzar a jugar. Para acceder al perfil o cerrar sesión, selecciona el ícono de **persona**. Si deseas consultar el total de aciertos, tiempo total de juego, aciertos incorrectos y cantidad de reinicios, accede al ícono de **trofeo**.
-5. Al pulsar el ícono de **play**, interactúa con las cartas para voltearlas. El objetivo es encontrar los pares correspondientes antes de que se agote el tiempo.
+## 1. Espera a que termine el splash inicial
 
-Si el jugador pierde, tendrá la opción de reiniciar el nivel. Si gana, podrá avanzar al siguiente nivel. Los niveles son de progresión infinita y se incrementa la dificultad con cada avance.
+Cuando inicies la aplicación, verás una pantalla de inicio (splash) que mostrará el logotipo y el nombre de la aplicación. Esta pantalla se mostrará brevemente antes de que puedas acceder a las funciones principales de la aplicación. Simplemente espera a que termine la animación para proceder al siguiente paso.
+
+## 2. Inicia sesión o regístrate
+
+Al finalizar el splash, serás dirigido a la pantalla de inicio de sesión. Si ya tienes una cuenta, ingresa tus credenciales (usuario y contraseña) y presiona **Iniciar sesión**. 
+
+Si no cuentas con una cuenta, busca y selecciona el enlace **NO TENGO CUENTA**. Este enlace te llevará a la pantalla de registro, donde podrás crear una cuenta nueva proporcionando tus datos básicos como nombre de usuario, correo electrónico y una contraseña segura. Una vez completado el registro, podrás iniciar sesión automáticamente.
+
+## 3. Crea una cuenta válida e inicia sesión
+
+Al completar el registro, la aplicación validará tus datos. Asegúrate de ingresar información correcta y válida, como una dirección de correo electrónico activa, para que puedas recibir notificaciones o restablecer tu contraseña si es necesario. Después de registrarte correctamente, serás redirigido automáticamente a la pantalla principal, donde podrás iniciar sesión.
+
+## 4. Navega por las opciones del menú principal
+
+En la pantalla principal, verás varios íconos que te permitirán interactuar con la aplicación de diferentes maneras:
+
+- **Ícono de Play (reproducir)**: Si deseas comenzar a jugar, presiona el ícono de **Play**. Esto te llevará a la pantalla de juego donde podrás interactuar con las cartas. 
+- **Ícono de Persona (perfil)**: Si deseas ver tu perfil, que incluye tu nombre de usuario, foto, estadísticas de juego y otras configuraciones, haz clic en el ícono de **Persona**. También puedes cerrar sesión desde esta sección, si lo deseas.
+- **Ícono de Trofeo (estadísticas)**: Si deseas consultar tus estadísticas de juego, como el total de aciertos, el tiempo total jugado, el número de aciertos incorrectos y la cantidad de reinicios realizados, selecciona el ícono de **Trofeo**. Este ícono te llevará a una sección donde se muestran los resultados de tus partidas anteriores.
+
+## 5. Jugar el juego
+
+Al presionar el ícono de **Play**, serás llevado a la pantalla de juego, donde el objetivo principal es encontrar pares de cartas antes de que se agote el tiempo. El juego consiste en voltear las cartas haciendo clic sobre ellas. Cada carta tiene un par que debe ser encontrado en la misma sesión.
+
+El temporizador comenzará a contar desde el momento en que inicies el juego. Tu objetivo es encontrar todos los pares posibles en el menor tiempo posible. Si logras hacerlo antes de que se termine el tiempo, ganarás el nivel y podrás avanzar al siguiente.
+
+**Importante**: Para ganar un nivel, debes encontrar todos los pares dentro del tiempo límite. Si el tiempo se agota sin que hayas encontrado todos los pares, perderás el nivel y tendrás que reiniciarlo.
+
+## 6. Opciones tras perder o ganar
+
+- **Si pierdes**: En caso de no lograr encontrar todos los pares antes de que termine el tiempo, podrás reiniciar el nivel y volver a intentarlo. Esto te permitirá mejorar tu rendimiento y conocer mejor la disposición de las cartas.
+  
+- **Si ganas**: Si logras completar el nivel dentro del tiempo límite, podrás avanzar al siguiente nivel, que será más difícil. Los niveles en la aplicación son infinitos, lo que significa que siempre habrá un nuevo reto para superar. La dificultad aumenta conforme avanzas, lo que hará que el juego sea cada vez más desafiante.
+
+Los niveles no tienen un límite, lo que permite una progresión continua en la que cada vez enfrentarás más desafíos y tendrás que mejorar tus habilidades para completar el juego.
 
 
 
