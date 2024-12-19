@@ -1,7 +1,10 @@
 package com.example.sinnombre
 
 import android.graphics.Color
+import kotlinx.coroutines.*
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import android.widget.GridLayout
 import androidx.appcompat.app.AppCompatActivity
@@ -99,31 +102,27 @@ class PantallaDeJuegoActivity : AppCompatActivity() {
                 if (!visitados[fila][columna]) {
                     if (mapa[filaPrevia][columnaPrevia] == mapa[fila][columna]) {
                         //Son la misma carta
-                        view.setBackgroundColor(Color.GREEN)
-                        vistaAnterior?.setBackgroundColor(Color.GREEN)
-                        contador++
-                        visitados[fila][columna] = true
-                        aciertos++
-
-
-
-
+                        view.setBackgroundColor(Color.RED)
+                        Handler(Looper.getMainLooper()).postDelayed({
+                            view.setBackgroundColor(Color.GREEN)
+                            vistaAnterior?.setBackgroundColor(Color.GREEN)
+                            contador++
+                            visitados[fila][columna] = true
+                            aciertos++
+                        }, 1000)
                         if(aciertos == cantidadColumnas*cantidadFilas/2){
                             //Que pasa cuando gane???
                         }
-
-
-
-
-
                     } else {
-                        //Disenio previo de la cartita
-                        view.setBackgroundColor(Color.BLACK)
-                        vistaAnterior?.setBackgroundColor(Color.BLACK)
-                        contador++
-                        visitados[filaPrevia][columnaPrevia] = false
-                        fallos++
 
+                        view.setBackgroundColor(Color.RED)
+                        Handler(Looper.getMainLooper()).postDelayed({
+                            view.setBackgroundColor(Color.BLACK)
+                            vistaAnterior?.setBackgroundColor(Color.BLACK)
+                            contador++
+                            visitados[filaPrevia][columnaPrevia] = false
+                            fallos++
+                        }, 1000)
                     }
                 }
             }
