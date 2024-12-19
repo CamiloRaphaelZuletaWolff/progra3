@@ -1,19 +1,26 @@
 package com.example.sinnombre
 
+import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import kotlinx.coroutines.*
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.os.SystemClock
 import android.view.View
+import android.widget.Chronometer
 import android.widget.GridLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.example.sinnombre.DataClasses.PartidaDB
+import com.example.sinnombre.SQLite.SQLManager
 import com.example.sinnombre.databinding.ActivityPantallaJuegoBinding
 
 class PantallaDeJuegoActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPantallaJuegoBinding
+
     var contador: Int = 0
     var aciertos : Int = 0
     var fallos : Int = 0
@@ -29,6 +36,12 @@ class PantallaDeJuegoActivity : AppCompatActivity() {
         val cantidadFilas = 3
         val cantidadColumnas = 2
         setContentView(view1)
+
+        binding.botonAtras.setOnClickListener {
+            val intent = Intent(this, PantallaDeInicioActivity::class.java)
+            startActivity(intent)
+        }
+
         mapa = crearMapa(cantidadFilas, cantidadColumnas)
         val visitados = Array(cantidadFilas) { BooleanArray(cantidadColumnas) }
         val botones = listOf(
