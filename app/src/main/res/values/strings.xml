@@ -1,3 +1,28 @@
 <resources>
     <string name="app_name">Sin Nombre</string>
+    <string name="titulo_iniciar_sesion">Iniciar Sesión</string>
+    <string name="hint_edit_text_correo">Correo electrónico</string>
+    <string name="hint_edit_text_contrasena">Contraseña</string>
+    <string name="texto_boton_iniciar_sesion">Ingresar</string>
+    <string name="titulo_crear_cuenta">Crear cuenta</string>
+    <string name="edit_text_nombre_completo">Nombre completo</string>
+    <string name="edit_text_correo_electronico">Correo electrónico</string>
+    <string name="edit_text_nueva_contrasena">Nueva contraseña</string>
+    <string name="edit_text_confirmar_contrasena">Confirmar contraseña</string>
+    <string name="texto_clickable_tengo_una_cuenta">Tengo una cuenta</string>
+    <string name="texto_boton_registrar">Registrar</string>
+    <string name="nombre_del_juego">Recuerdín</string>
+    <string name="titulo_pantalla_puntaje">Puntaje</string>
+    <string name="nombre_usuario_ejemplo">PixelCrafter</string>
+    <string name="correo_usuario_ejemplo">pixelcrafter@gmail.com</string>
+    <string name="tiempo_total_jugado">Tiempo total jugado</string>
+    <string name="total_de_aciertos">Total de aciertos</string>
+    <string name="total_de_incorrectos">Total de incorrectos</string>
+    <string name="total_de_reinicios">Total de reinicios</string>
+    <string name="dato_ejemplo_tiempo_total">1h 20 min 5 seg</string>
+    <string name="dato_ejemplo_total_aciertos">28</string>
+    <string name="dato_ejemplo_total_incorrectos">5</string>
+    <string name="dato_ejemplo_total_reinicios">15</string>
+    <string name="boton_cerrar_sesion">Cerrar Sesión</string>
+    <string name="texto_clickable_no_tengo_una_cuenta">No tengo una cuenta</string>
 </resources>
