@@ -12,6 +12,8 @@ import android.widget.GridLayout
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.example.sinnombre.PantallaDeInicioActivity.Companion.ID_PASO_COLUMNA
+import com.example.sinnombre.PantallaDeInicioActivity.Companion.ID_PASO_FILA
 import com.example.sinnombre.databinding.ActivityPantallaJuegoBinding
 
 class PantallaDeJuegoActivity : AppCompatActivity() {
@@ -31,8 +33,8 @@ class PantallaDeJuegoActivity : AppCompatActivity() {
         binding = ActivityPantallaJuegoBinding.inflate(layoutInflater)
         val view1 = binding.root
         setContentView(view1)
-        val cantidadFilas = 3
-        val cantidadColumnas = 2
+        val cantidadFilas = intent.getIntExtra(ID_PASO_FILA,0)
+        val cantidadColumnas = intent.getIntExtra(ID_PASO_COLUMNA,0)
         iniciarCronometro(30000)
         mapa = crearMapa(cantidadFilas, cantidadColumnas)
         val visitados = Array(cantidadFilas) { BooleanArray(cantidadColumnas) }
@@ -78,6 +80,13 @@ class PantallaDeJuegoActivity : AppCompatActivity() {
             binding.Pos73,
             binding.Pos74
         )
+        binding.botonAtras.setOnClickListener{
+            val intent = Intent(this, PantallaDeInicioActivity::class.java)
+            startActivity(intent)
+        }
+        binding.botonReiniciar.setOnClickListener{
+
+        }
         organizarImageButtons(cantidadFilas, cantidadColumnas, botones)
         val listener = View.OnClickListener { view ->
             val fila = obtenerFila(resources.getResourceEntryName(view.id))
@@ -104,6 +113,7 @@ class PantallaDeJuegoActivity : AppCompatActivity() {
                             visitados[fila][columna] = true
                             aciertos++
                         }, 1000)
+                        binding.numeroAciertos.text = aciertos.toString()
                         if(aciertos +1 >= cantidadColumnas*cantidadFilas/2){
                             detenerCronometro()
                             val intent = Intent(this, PantallaGanarActivity::class.java)
@@ -118,6 +128,7 @@ class PantallaDeJuegoActivity : AppCompatActivity() {
                             contador++
                             visitados[filaPrevia][columnaPrevia] = false
                             fallos++
+                            binding.numeroIncorrectos.text = fallos.toString()
                         }, 1000)
                     }
                 }

@@ -123,7 +123,7 @@
                 android:id="@+id/numero_incorrectos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="2"
+                android:text="0"
                 android:textAlignment="textEnd"
                 android:textSize="20sp"
                 android:textColor="@color/black"
@@ -168,14 +168,14 @@
                 android:id="@+id/numero_aciertos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="2"
-                android:textAlignment="textEnd"
-                android:textSize="20sp"
-                android:textColor="@color/black"
                 android:layout_marginEnd="10dp"
+                android:text="0"
+                android:textAlignment="textEnd"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
