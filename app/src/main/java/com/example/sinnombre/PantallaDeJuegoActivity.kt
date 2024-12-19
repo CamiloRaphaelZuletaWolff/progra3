@@ -17,6 +17,7 @@ import com.example.sinnombre.databinding.ActivityPantallaJuegoBinding
 class PantallaDeJuegoActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPantallaJuegoBinding
+    var cronometro: CountDownTimer? = null
     var contador: Int = 0
     var aciertos : Int = 0
     var fallos : Int = 0
@@ -104,6 +105,7 @@ class PantallaDeJuegoActivity : AppCompatActivity() {
                             aciertos++
                         }, 1000)
                         if(aciertos +1 >= cantidadColumnas*cantidadFilas/2){
+                            detenerCronometro()
                             val intent = Intent(this, PantallaGanarActivity::class.java)
                             startActivity(intent)
                         }
@@ -197,21 +199,23 @@ class PantallaDeJuegoActivity : AppCompatActivity() {
 
     }
 
-
     fun iniciarCronometro(tiempo: Long) {
-        object : CountDownTimer(tiempo, 1000) {
+        cronometro = object : CountDownTimer(tiempo, 1000) {
             override fun onTick(millisUntilFinished: Long) {
-                binding.cronometro.text = " ${millisUntilFinished / 1000}"
+                binding.cronometro.text = "${millisUntilFinished / 1000}"
             }
 
             override fun onFinish() {
                 val intent = Intent(this@PantallaDeJuegoActivity, PantallaPerderActivity::class.java)
                 startActivity(intent)
             }
-        }.start()
+        }
+        cronometro?.start()
     }
 
-
+    fun detenerCronometro() {
+        cronometro?.cancel()
+    }
     fun obtenerFila(id: String): Int {
         return id[id.length - 2].toString().toInt()
     }
