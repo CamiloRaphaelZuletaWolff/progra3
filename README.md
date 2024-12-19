@@ -39,36 +39,6 @@ Espera a que el proceso de sincronización termine. Si aparecen errores, sigue l
 
 OJO: si sale error en el gradle implementar google-services.json:
 
-[Uploading googl{
-  "project_info": {
-    "project_number": "383851007435",
-    "project_id": "recuerdin-65394",
-    "storage_bucket": "recuerdin-65394.firebasestorage.app"
-  },
-  "client": [
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:383851007435:android:34ac5edb730aed9a44ba4e",
-        "android_client_info": {
-          "package_name": "com.example.sinnombre"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDIVquupIzxHfzpC5zEMkSCesTVdo75lWQ"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    }
-  ],
-  "configuration_version": "1"
-}e-services.json…]()
-
 
 [google-services.json](https://github.com/user-attachments/files/18192218/google-services.json)
 
