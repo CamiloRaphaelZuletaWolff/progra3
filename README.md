@@ -29,6 +29,14 @@ En la pantalla principal, selecciona Open o ve al menú File > Open....
 Navega hasta el directorio donde clonaste el repositorio.
 
 Selecciona la carpeta principal del proyecto y haz clic en OK.
+En el caso que no puedas clonar con comandos opta por esta opción:
+
+![Captura de pantalla 2024-12-19 004252](https://github.com/user-attachments/assets/ee7b09f3-a810-4604-99ae-3a340fa20ac5)
+Entras a Get from VCS
+
+Pegas este URL(https://github.com/CamiloRaphaelZuletaWolff/progra3) y TODO LISTO
+
+![Captura de pantalla 2024-12-19 004329](https://github.com/user-attachments/assets/51939c7f-3fa9-4735-8777-b735b10051f9)
 
 3. Sincronizar Gradle
 Una vez que el proyecto se abra, Android Studio detectará automáticamente los archivos build.gradle.
