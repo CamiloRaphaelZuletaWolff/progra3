@@ -85,6 +85,8 @@ class PantallaDeJuegoActivity : AppCompatActivity() {
             startActivity(intent)
         }
         binding.botonReiniciar.setOnClickListener{
+            finish()
+            startActivity(intent)
 
         }
         organizarImageButtons(cantidadFilas, cantidadColumnas, botones)
