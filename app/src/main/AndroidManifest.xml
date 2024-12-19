@@ -24,9 +24,14 @@
         <activity
             android:name=".PantallaPerderActivity"
             android:exported="true"/>
-
         <activity
             android:name=".IniciarSesionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PerfilActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PuntajeActivity"
             android:exported="false" />
         <activity
             android:name=".PantallaDeInicioActivity"
