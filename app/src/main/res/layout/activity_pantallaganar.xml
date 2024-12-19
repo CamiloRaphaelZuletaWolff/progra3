@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo_general"
+    tools:context=".PantallaGanarActivity">
+
+    <TextView
+        android:id="@+id/nombre_del_juego"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:background="@color/celeste"
+        android:text="@string/nombre_del_juego"
+        android:textColor="@color/blue"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:src="@drawable/logo_sin_fondo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="300dp"
+        android:layout_height="500dp"
+        app:cardCornerRadius="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="2:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imagen_ganar"
+                android:layout_width="133dp"
+                android:layout_height="143dp"
+                android:src="@drawable/ganaste"
+                android:layout_marginBottom="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/texto_ganaste"/>
+
+            <TextView
+                android:id="@+id/texto_ganaste"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/verde"
+                android:text="Ganaste!!!"
+                android:textColor="@color/white"
+                android:textSize="35sp"
+                android:padding="10dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+
+            <ImageButton
+                android:id="@+id/boton_siguiente_nivel"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:backgroundTint="@color/skyblue"
+                android:src="@drawable/boton_siguiente_nivel"
+                android:layout_marginTop="20dp"
+                app:layout_constraintTop_toBottomOf="@id/texto_ganaste"
+                app:layout_constraintStart_toStartOf="@id/texto_ganaste"/>
+
+            <ImageButton
+                android:id="@+id/boton_inicio"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:backgroundTint="@color/skyblue"
+                android:src="@drawable/boton_home"
+                android:layout_marginTop="20dp"
+                app:layout_constraintTop_toBottomOf="@id/texto_ganaste"
+                app:layout_constraintEnd_toEndOf="@id/texto_ganaste"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

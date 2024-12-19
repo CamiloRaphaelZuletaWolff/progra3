@@ -19,6 +19,13 @@
             android:name=".CrearCuentaActivity"
             android:exported="true"/>
         <activity
+            android:name=".PantallaGanarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PantallaPerderActivity"
+            android:exported="true"/>
+
+        <activity
             android:name=".IniciarSesionActivity"
             android:exported="false" />
         <activity
