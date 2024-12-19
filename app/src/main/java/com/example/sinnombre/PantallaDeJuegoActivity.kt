@@ -12,6 +12,8 @@ class PantallaDeJuegoActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPantallaJuegoBinding
     var contador: Int = 0
+    var aciertos : Int = 0
+    var fallos : Int = 0
     var filaPrevia: Int = 0
     var columnaPrevia: Int = 0
     var mapa: Array<IntArray> = arrayOf()
@@ -72,6 +74,18 @@ class PantallaDeJuegoActivity : AppCompatActivity() {
         val listener = View.OnClickListener { view ->
             val fila = obtenerFila(resources.getResourceEntryName(view.id))
             val columna = obtenerColumna(resources.getResourceEntryName(view.id))
+
+
+
+            //Carta Trampa
+            if(mapa[fila][columna]==29){
+                visitados[fila][columna] = true
+                //Efecto de la carta Trampa
+
+                //Averiguar el equivalente a continue de c++ en kotlin
+            }
+
+
             if (contador % 2 == 0) {
                 if (!visitados[fila][columna]) {
                     view.setBackgroundColor(Color.RED)
@@ -89,12 +103,26 @@ class PantallaDeJuegoActivity : AppCompatActivity() {
                         vistaAnterior?.setBackgroundColor(Color.GREEN)
                         contador++
                         visitados[fila][columna] = true
+                        aciertos++
+
+
+
+
+                        if(aciertos == cantidadColumnas*cantidadFilas/2){
+                            //Que pasa cuando gane???
+                        }
+
+
+
+
+
                     } else {
                         //Disenio previo de la cartita
                         view.setBackgroundColor(Color.BLACK)
                         vistaAnterior?.setBackgroundColor(Color.BLACK)
                         contador++
                         visitados[filaPrevia][columnaPrevia] = false
+                        fallos++
 
                     }
                 }
@@ -172,10 +200,12 @@ class PantallaDeJuegoActivity : AppCompatActivity() {
     fun crearMapa(filas: Int, columnas: Int): Array<IntArray> {
         val maxNumero = (filas * columnas) / 2
         val numeros = mutableListOf<Int>()
-        for (num in 1..maxNumero) {
+        for (num in 1 until maxNumero) {
             numeros.add(num)
             numeros.add(num)
         }
+        numeros.add(29)
+        numeros.add(29)
         numeros.shuffle()
         val matriz = Array(filas) { IntArray(columnas) }
         var index = 0
