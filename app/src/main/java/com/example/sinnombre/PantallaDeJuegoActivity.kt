@@ -143,23 +143,23 @@ class PantallaDeJuegoActivity : AppCompatActivity() {
         constraintLayout.addView(gridLayout)
     }
 
-    private fun reorganizarBotones(
-        filas: Int,
-        columnas: Int,
-        matrizCompleta: List<View>
-    ): List<View> {
-        val submatriz = mutableListOf<View>() // Lista para almacenar la submatriz
-        val totalColumnas =
-            matrizCompleta.size / filas // Calcula las columnas originales de la matriz principal
-
-        for (fila in 0 until filas) {
-            for (columna in 0 until columnas) {
-                val indice = fila * totalColumnas + columna // Calcula el índice en la lista lineal
-                submatriz.add(matrizCompleta[indice]) // Añade el elemento a la lista de la submatriz
+    private fun reorganizarBotones(filas: Int, columnas: Int, botones: List<View>): List<View> {
+        var listita = mutableListOf<View>()
+        for (i in 0 until 40){
+            val boton = botones[i]
+            val filaBoton = obtenerFila(resources.getResourceEntryName(boton.id))
+            val columnaBoton = obtenerColumna(resources.getResourceEntryName(boton.id))
+            if (filaBoton <= filas && columnaBoton <= columnas) {
+                listita.add(boton)
             }
-        }
-        return submatriz
+
+
+
+            }
+        return listita
+
     }
+
 
     fun obtenerFila(id: String): Int {
         return id[id.length - 2].toString().toInt()
