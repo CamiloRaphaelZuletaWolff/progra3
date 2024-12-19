@@ -93,14 +93,15 @@ Haz clic en el botón Run (el ícono de play) en la barra de herramientas.
 
 
 
-# Cómo usar la aplicación
+# Instrucciones para el uso de la aplicación
 
-1. Deja que pase el splash.
-2. Inicia sesión. En caso de no contar con una cuenta, ve al apartado de **NO TENGO CUENTA**.
-3. Crea una cuenta válida e inicia sesión.
-4. Pulsa el ícono de **play** si deseas jugar. Si quieres ver el perfil o cerrar sesión, ve al ícono de **persona**. Si deseas ver el total de aciertos, tiempo total jugado, total de incorrectos y total de reinicios, ve al ícono de **trofeo**.
-5. Si presionas el ícono de **play**, pulsa las cartas para que se volteen. El objetivo es encontrar pares antes de que se acabe el tiempo.
+1. Espera a que termine el splash inicial.
+2. Inicia sesión. Si aún no tienes una cuenta, dirígete a la sección **NO TENGO CUENTA**.
+3. Registra una cuenta válida e inicia sesión.
+4. Presiona el ícono de **play** para comenzar a jugar. Para acceder al perfil o cerrar sesión, selecciona el ícono de **persona**. Si deseas consultar el total de aciertos, tiempo total de juego, aciertos incorrectos y cantidad de reinicios, accede al ícono de **trofeo**.
+5. Al pulsar el ícono de **play**, interactúa con las cartas para voltearlas. El objetivo es encontrar los pares correspondientes antes de que se agote el tiempo.
 
-En caso de que pierdas, podrás reiniciar el nivel, y si ganas, podrás pasar al siguiente. Los niveles son infinitos y cada vez más difíciles.
+Si el jugador pierde, tendrá la opción de reiniciar el nivel. Si gana, podrá avanzar al siguiente nivel. Los niveles son de progresión infinita y se incrementa la dificultad con cada avance.
+
 
 
