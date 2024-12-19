@@ -1,22 +1,30 @@
 package com.example.sinnombre
 
-import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.example.sinnombre.databinding.ActivityPantallaganarBinding // Asegúrate de que el binding esté configurado correctamente
+import com.example.sinnombre.PantallaDeInicioActivity // Cambia al nombre completo del paquete donde esté declarada tu actividad
 
 class PantallaGanarActivity : AppCompatActivity() {
-    @SuppressLint("MissingInflatedId")
+
+    private lateinit var binding: ActivityPantallaganarBinding // Usar ViewBinding si lo configuraste correctamente
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_pantallaganar)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+
+        // Configurar ViewBinding
+        binding = ActivityPantallaganarBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        // Configurar el botón "Atrás"
+        val botonAtras: ImageButton = findViewById(R.id.boton_atras)
+        botonAtras.setOnClickListener {
+            // Redirigir a PantallaDeInicioActivity
+            val intent = Intent(this, PantallaDeInicioActivity::class.java)
+            startActivity(intent)
+            finish() // Finaliza esta actividad
         }
     }
 }
