@@ -1,7 +1,10 @@
 package com.example.sinnombre
 
 import android.graphics.Color
+import kotlinx.coroutines.*
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import android.widget.GridLayout
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +15,8 @@ class PantallaDeJuegoActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPantallaJuegoBinding
     var contador: Int = 0
+    var aciertos : Int = 0
+    var fallos : Int = 0
     var filaPrevia: Int = 0
     var columnaPrevia: Int = 0
     var mapa: Array<IntArray> = arrayOf()
@@ -72,6 +77,18 @@ class PantallaDeJuegoActivity : AppCompatActivity() {
         val listener = View.OnClickListener { view ->
             val fila = obtenerFila(resources.getResourceEntryName(view.id))
             val columna = obtenerColumna(resources.getResourceEntryName(view.id))
+
+
+
+            //Carta Trampa
+            if(mapa[fila][columna]==29){
+                visitados[fila][columna] = true
+                //Efecto de la carta Trampa
+
+                //Averiguar el equivalente a continue de c++ en kotlin
+            }
+
+
             if (contador % 2 == 0) {
                 if (!visitados[fila][columna]) {
                     view.setBackgroundColor(Color.RED)
@@ -85,17 +102,27 @@ class PantallaDeJuegoActivity : AppCompatActivity() {
                 if (!visitados[fila][columna]) {
                     if (mapa[filaPrevia][columnaPrevia] == mapa[fila][columna]) {
                         //Son la misma carta
-                        view.setBackgroundColor(Color.GREEN)
-                        vistaAnterior?.setBackgroundColor(Color.GREEN)
-                        contador++
-                        visitados[fila][columna] = true
+                        view.setBackgroundColor(Color.RED)
+                        Handler(Looper.getMainLooper()).postDelayed({
+                            view.setBackgroundColor(Color.GREEN)
+                            vistaAnterior?.setBackgroundColor(Color.GREEN)
+                            contador++
+                            visitados[fila][columna] = true
+                            aciertos++
+                        }, 1000)
+                        if(aciertos == cantidadColumnas*cantidadFilas/2){
+                            //Que pasa cuando gane???
+                        }
                     } else {
-                        //Disenio previo de la cartita
-                        view.setBackgroundColor(Color.BLACK)
-                        vistaAnterior?.setBackgroundColor(Color.BLACK)
-                        contador++
-                        visitados[filaPrevia][columnaPrevia] = false
 
+                        view.setBackgroundColor(Color.RED)
+                        Handler(Looper.getMainLooper()).postDelayed({
+                            view.setBackgroundColor(Color.BLACK)
+                            vistaAnterior?.setBackgroundColor(Color.BLACK)
+                            contador++
+                            visitados[filaPrevia][columnaPrevia] = false
+                            fallos++
+                        }, 1000)
                     }
                 }
             }
@@ -143,23 +170,23 @@ class PantallaDeJuegoActivity : AppCompatActivity() {
         constraintLayout.addView(gridLayout)
     }
 
-    private fun reorganizarBotones(
-        filas: Int,
-        columnas: Int,
-        matrizCompleta: List<View>
-    ): List<View> {
-        val submatriz = mutableListOf<View>() // Lista para almacenar la submatriz
-        val totalColumnas =
-            matrizCompleta.size / filas // Calcula las columnas originales de la matriz principal
-
-        for (fila in 0 until filas) {
-            for (columna in 0 until columnas) {
-                val indice = fila * totalColumnas + columna // Calcula el índice en la lista lineal
-                submatriz.add(matrizCompleta[indice]) // Añade el elemento a la lista de la submatriz
+    private fun reorganizarBotones(filas: Int, columnas: Int, botones: List<View>): List<View> {
+        var listita = mutableListOf<View>()
+        for (i in 0 until 40){
+            val boton = botones[i]
+            val filaBoton = obtenerFila(resources.getResourceEntryName(boton.id))
+            val columnaBoton = obtenerColumna(resources.getResourceEntryName(boton.id))
+            if (filaBoton <= filas && columnaBoton <= columnas) {
+                listita.add(boton)
             }
-        }
-        return submatriz
+
+
+
+            }
+        return listita
+
     }
+
 
     fun obtenerFila(id: String): Int {
         return id[id.length - 2].toString().toInt()
@@ -172,10 +199,12 @@ class PantallaDeJuegoActivity : AppCompatActivity() {
     fun crearMapa(filas: Int, columnas: Int): Array<IntArray> {
         val maxNumero = (filas * columnas) / 2
         val numeros = mutableListOf<Int>()
-        for (num in 1..maxNumero) {
+        for (num in 1 until maxNumero) {
             numeros.add(num)
             numeros.add(num)
         }
+        numeros.add(29)
+        numeros.add(29)
         numeros.shuffle()
         val matriz = Array(filas) { IntArray(columnas) }
         var index = 0
