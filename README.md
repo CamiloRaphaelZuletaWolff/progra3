@@ -1,4 +1,4 @@
-[google-services.json](https://github.com/user-attachments/files/18191922/google-services.json)# Guía para Clonar un Repositorio en la Rama Master y Abrirlo en Android Studio
+# Guía para Clonar un Repositorio en la Rama Master y Abrirlo en Android Studio
 
 Este README describe los pasos para clonar un repositorio desde GitHub en la rama master y abrirlo en Android Studio.
 
