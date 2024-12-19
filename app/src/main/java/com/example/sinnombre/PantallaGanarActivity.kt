@@ -18,13 +18,20 @@ class PantallaGanarActivity : AppCompatActivity() {
         binding = ActivityPantallaganarBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Configurar el botón "Atrás"
-        val botonAtras: ImageButton = findViewById(R.id.boton_atras)
-        botonAtras.setOnClickListener {
+        val botonSiguientenivel: ImageButton = findViewById(R.id.boton_siguiente_nivel)
+        botonSiguientenivel.setOnClickListener {
             // Redirigir a PantallaDeInicioActivity
             val intent = Intent(this, PantallaDeInicioActivity::class.java)
             startActivity(intent)
-            finish() // Finaliza esta actividad
+
+            // Configurar el botón "Atrás"
+            val botonAtras: ImageButton = findViewById(R.id.boton_inicio)
+            botonAtras.setOnClickListener {
+                // Redirigir a PantallaDeInicioActivity
+                val intent = Intent(this, PantallaDeInicioActivity::class.java)
+                startActivity(intent)
+                finish() // Finaliza esta actividad
+            }
         }
     }
 }
