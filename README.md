@@ -37,7 +37,8 @@ Si se te solicita sincronizar el proyecto con Gradle, haz clic en Sync Now.
 
 Espera a que el proceso de sincronización termine. Si aparecen errores, sigue las instrucciones para resolverlos (pueden estar relacionados con versiones de Gradle o dependencias faltantes).
 
-OJO: si sale error en el gradle implementar esto:
+OJO: si sale error en el gradle implementar google-services.json:
+
 [Uploading google-services.json{
   "project_info": {
     "project_number": "383851007435",
@@ -67,6 +68,9 @@ OJO: si sale error en el gradle implementar esto:
   ],
   "configuration_version": "1"
 }…]()
+
+
+
 En este espacio:
 ![2153b06e-9aed-467f-8a06-3496f9134417](https://github.com/user-attachments/assets/67d314e6-94dd-42d8-941e-f9edef0ba3ef)
 
