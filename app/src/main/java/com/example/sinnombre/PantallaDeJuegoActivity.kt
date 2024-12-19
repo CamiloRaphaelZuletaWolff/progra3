@@ -103,7 +103,7 @@ class PantallaDeJuegoActivity : AppCompatActivity() {
                             visitados[fila][columna] = true
                             aciertos++
                         }, 1000)
-                        if(aciertos +2 >= cantidadColumnas*cantidadFilas/2){
+                        if(aciertos +1 >= cantidadColumnas*cantidadFilas/2){
                             val intent = Intent(this, PantallaGanarActivity::class.java)
                             startActivity(intent)
                         }
@@ -148,7 +148,7 @@ class PantallaDeJuegoActivity : AppCompatActivity() {
                 ConstraintLayout.LayoutParams.MATCH_PARENT,
                 0
             ).apply {
-                topToBottom = binding.Recuerdin.id
+                topToBottom = binding.guideLineHorizontal.id
                 bottomToBottom = ConstraintLayout.LayoutParams.PARENT_ID
                 startToStart = ConstraintLayout.LayoutParams.PARENT_ID
                 endToEnd = ConstraintLayout.LayoutParams.PARENT_ID
