@@ -1,7 +1,7 @@
 package com.example.sinnombre
 
-import android.content.Context
 import android.content.Intent
+import android.content.Context
 import android.graphics.Color
 import kotlinx.coroutines.*
 import android.os.Bundle
@@ -34,8 +34,8 @@ class PantallaDeJuegoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityPantallaJuegoBinding.inflate(layoutInflater)
         val view1 = binding.root
-        val cantidadFilas = 5
-        val cantidadColumnas = 4
+        val cantidadFilas = 3
+        val cantidadColumnas = 2
         setContentView(view1)
 
         binding.botonAtras.setOnClickListener {
@@ -94,9 +94,7 @@ class PantallaDeJuegoActivity : AppCompatActivity() {
             //Carta Trampa
             if(mapa[fila][columna]==29){
                 visitados[fila][columna] = true
-                //Efecto de la carta Trampa
-
-                //Averiguar el equivalente a continue de c++ en kotlin
+                view.visibility = View.GONE
             }
             if (contador % 2 == 0) {
                 if (!visitados[fila][columna]) {
@@ -120,8 +118,9 @@ class PantallaDeJuegoActivity : AppCompatActivity() {
                             visitados[fila][columna] = true
                             aciertos++
                         }, 1000)
-                        if(aciertos == cantidadColumnas*cantidadFilas/2){
-                            //Que pasa cuando gane???
+                        if(aciertos +2 >= cantidadColumnas*cantidadFilas/2){
+                            val intent = Intent(this, PantallaGanarActivity::class.java)
+                            startActivity(intent)
                         }
                     } else {
 
@@ -201,6 +200,9 @@ class PantallaDeJuegoActivity : AppCompatActivity() {
             val columnaBoton = obtenerColumna(resources.getResourceEntryName(boton.id))
             if (filaBoton <= filas && columnaBoton <= columnas) {
                 listita.add(boton)
+            }else{
+                botones[i].visibility = View.GONE
+
             }
 
 

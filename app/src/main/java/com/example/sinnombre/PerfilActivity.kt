@@ -1,10 +1,17 @@
 package com.example.sinnombre
 
+import android.content.Intent
+import android.graphics.Color
+import kotlinx.coroutines.*
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.os.Handler
+import android.os.Looper
+import android.view.View
+import android.widget.GridLayout
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.constraintlayout.widget.ConstraintLayout
+import com.example.sinnombre.databinding.ActivityPantallaJuegoBinding
 import com.example.sinnombre.databinding.ActivityPerfilBinding
 
 class PerfilActivity : AppCompatActivity() {
