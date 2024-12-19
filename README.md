@@ -83,9 +83,24 @@ Ve a File > Project Structure... > SDK Location.
 Confirma que el "Android SDK" apunte a una versión compatible con el proyecto.
 ![{1D65C4F3-B7CD-4B9D-A372-36F545E655DC}](https://github.com/user-attachments/assets/0894f8a1-0e78-4771-a357-576b9d1e5ee0)
 
+
+
+
 5. Ejecutar la Aplicación
 Conecta un dispositivo Android o inicia un emulador desde Android Studio.
 
 Haz clic en el botón Run (el ícono de play) en la barra de herramientas.
+
+
+
+# Cómo usar la aplicación
+
+1. Deja que pase el splash.
+2. Inicia sesión. En caso de no contar con una cuenta, ve al apartado de **NO TENGO CUENTA**.
+3. Crea una cuenta válida e inicia sesión.
+4. Pulsa el ícono de **play** si deseas jugar. Si quieres ver el perfil o cerrar sesión, ve al ícono de **persona**. Si deseas ver el total de aciertos, tiempo total jugado, total de incorrectos y total de reinicios, ve al ícono de **trofeo**.
+5. Si presionas el ícono de **play**, pulsa las cartas para que se volteen. El objetivo es encontrar pares antes de que se acabe el tiempo.
+
+En caso de que pierdas, podrás reiniciar el nivel, y si ganas, podrás pasar al siguiente. Los niveles son infinitos y cada vez más difíciles.
 
 
