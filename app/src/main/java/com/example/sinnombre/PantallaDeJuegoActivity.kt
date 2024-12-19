@@ -7,6 +7,7 @@ import android.os.Handler
 import android.os.Looper
 import android.view.View
 import android.widget.GridLayout
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.sinnombre.databinding.ActivityPantallaJuegoBinding
@@ -26,8 +27,8 @@ class PantallaDeJuegoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityPantallaJuegoBinding.inflate(layoutInflater)
         val view1 = binding.root
-        val cantidadFilas = 3
-        val cantidadColumnas = 2
+        val cantidadFilas = 5
+        val cantidadColumnas = 4
         setContentView(view1)
         mapa = crearMapa(cantidadFilas, cantidadColumnas)
         val visitados = Array(cantidadFilas) { BooleanArray(cantidadColumnas) }
@@ -77,9 +78,6 @@ class PantallaDeJuegoActivity : AppCompatActivity() {
         val listener = View.OnClickListener { view ->
             val fila = obtenerFila(resources.getResourceEntryName(view.id))
             val columna = obtenerColumna(resources.getResourceEntryName(view.id))
-
-
-
             //Carta Trampa
             if(mapa[fila][columna]==29){
                 visitados[fila][columna] = true
@@ -87,11 +85,10 @@ class PantallaDeJuegoActivity : AppCompatActivity() {
 
                 //Averiguar el equivalente a continue de c++ en kotlin
             }
-
-
             if (contador % 2 == 0) {
                 if (!visitados[fila][columna]) {
-                    view.setBackgroundColor(Color.RED)
+                    cambiarImagen(view,fila,columna)
+//                    view.setBackgroundColor(Color.RED)
                     filaPrevia = fila
                     columnaPrevia = columna
                     vistaAnterior = view
@@ -102,10 +99,10 @@ class PantallaDeJuegoActivity : AppCompatActivity() {
                 if (!visitados[fila][columna]) {
                     if (mapa[filaPrevia][columnaPrevia] == mapa[fila][columna]) {
                         //Son la misma carta
-                        view.setBackgroundColor(Color.RED)
+                        cambiarImagen(view,fila,columna)
                         Handler(Looper.getMainLooper()).postDelayed({
-                            view.setBackgroundColor(Color.GREEN)
-                            vistaAnterior?.setBackgroundColor(Color.GREEN)
+                            view.visibility = View.GONE
+                            vistaAnterior?.visibility = View.GONE
                             contador++
                             visitados[fila][columna] = true
                             aciertos++
@@ -115,10 +112,10 @@ class PantallaDeJuegoActivity : AppCompatActivity() {
                         }
                     } else {
 
-                        view.setBackgroundColor(Color.RED)
+                        cambiarImagen(view,fila,columna)
                         Handler(Looper.getMainLooper()).postDelayed({
-                            view.setBackgroundColor(Color.BLACK)
-                            vistaAnterior?.setBackgroundColor(Color.BLACK)
+                            volverFondo(view)
+                            volverFondo(vistaAnterior)
                             contador++
                             visitados[filaPrevia][columnaPrevia] = false
                             fallos++
@@ -132,7 +129,20 @@ class PantallaDeJuegoActivity : AppCompatActivity() {
         }
     }
 
-    private fun organizarImageButtons(filas: Int, columnas: Int, botones: List<View>) {
+    fun volverFondo(view: View?){
+        val boton = view as ImageButton
+        boton.setImageResource(R.drawable.portadacartita)
+
+    }
+
+    fun cambiarImagen(view: View?, fila: Int, columna: Int) {
+        val boton = view as ImageButton
+        val nombreImagen = "carta" + mapa[fila][columna]
+        val idImagen = resources.getIdentifier(nombreImagen, "drawable", "com.example.sinnombre")
+        view.setImageResource(idImagen)
+    }
+
+    fun organizarImageButtons(filas: Int, columnas: Int, botones: List<View>) {
         val botonesUsar = reorganizarBotones(filas, columnas, botones)
         val gridLayout = GridLayout(this).apply {
             rowCount = filas
@@ -156,7 +166,7 @@ class PantallaDeJuegoActivity : AppCompatActivity() {
                 val params = GridLayout.LayoutParams().apply {
                     width = 0
                     height = 0
-                    rowSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f)
+                    rowSpec = GridLayout.spec(GridLayout.UNDEFINED, 1.5f)
                     columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f)
                 }
                 view.layoutParams = params

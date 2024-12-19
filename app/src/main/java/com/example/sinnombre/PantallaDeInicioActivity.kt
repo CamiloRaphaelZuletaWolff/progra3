@@ -15,7 +15,7 @@ class PantallaDeInicioActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.botonJugar.setOnClickListener {
-            val intent = Intent(this, PantallaGanarActivity::class.java)
+            val intent = Intent(this, PantallaDeJuegoActivity::class.java)
             //intentJuegoCartas.putExtra(ID_PASO_DIFICULTAD,9)
             startActivity(intent)
         }
