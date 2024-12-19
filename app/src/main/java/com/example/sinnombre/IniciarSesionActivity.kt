@@ -40,10 +40,7 @@ class IniciarSesionActivity : AppCompatActivity() {
                     auth.currentUser
                     val intent = Intent(this, PantallaDeInicioActivity::class.java)
                     startActivity(intent)
-                    val intent2 = Intent(this, PerfilActivity::class.java).apply {
-                        putExtra("email", email)
-                    }
-                    startActivity(intent2)
+
                 } else {
                     println(email)
                     println(password)
