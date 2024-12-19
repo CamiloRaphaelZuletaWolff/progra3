@@ -100,20 +100,20 @@ Cuando inicies la aplicación, verás una pantalla de inicio (splash) que mostra
 
 ## 2. Inicia sesión o regístrate
 
-Al finalizar el splash, serás dirigido a la pantalla de inicio de sesión. Si ya tienes una cuenta, ingresa tus credenciales (usuario y contraseña) y presiona **Iniciar sesión**. 
+Al finalizar el splash, serás dirigido a la pantalla de inicio de sesión. Si ya tienes una cuenta, ingresa tus credenciales (correo y contraseña) y presiona **Iniciar sesión**. 
 
-Si no cuentas con una cuenta, busca y selecciona el enlace **NO TENGO CUENTA**. Este enlace te llevará a la pantalla de registro, donde podrás crear una cuenta nueva proporcionando tus datos básicos como nombre de usuario, correo electrónico y una contraseña segura. Una vez completado el registro, podrás iniciar sesión automáticamente.
+Si no cuentas con una cuenta, busca y selecciona el enlace **NO TENGO CUENTA**. Este enlace te llevará a la pantalla de registro, donde podrás crear una cuenta nueva proporcionando tus datos básicos como nombre de usuario, correo electrónico y una contraseña segura. Una vez completado el registro, podrás iniciar sesión.
 
 ## 3. Crea una cuenta válida e inicia sesión
 
-Al completar el registro, la aplicación validará tus datos. Asegúrate de ingresar información correcta y válida, como una dirección de correo electrónico activa, para que puedas recibir notificaciones o restablecer tu contraseña si es necesario. Después de registrarte correctamente, serás redirigido automáticamente a la pantalla principal, donde podrás iniciar sesión.
+Al completar el registro, la aplicación validará tus datos. Asegúrate de ingresar información correcta y válida, como una dirección de correo electrónico activa. Después de registrarte correctamente, serás redirigido automáticamente a la pantalla principal, donde podrás iniciar sesión.
 
 ## 4. Navega por las opciones del menú principal
 
 En la pantalla principal, verás varios íconos que te permitirán interactuar con la aplicación de diferentes maneras:
 
 - **Ícono de Play (reproducir)**: Si deseas comenzar a jugar, presiona el ícono de **Play**. Esto te llevará a la pantalla de juego donde podrás interactuar con las cartas. 
-- **Ícono de Persona (perfil)**: Si deseas ver tu perfil, que incluye tu nombre de usuario, foto, estadísticas de juego y otras configuraciones, haz clic en el ícono de **Persona**. También puedes cerrar sesión desde esta sección, si lo deseas.
+- **Ícono de Persona (perfil)**: Si deseas ver tu perfil, que incluye tu nombre de usuario y correo, haz clic en el ícono de **Persona**. También puedes cerrar sesión desde esta sección, si lo deseas.
 - **Ícono de Trofeo (estadísticas)**: Si deseas consultar tus estadísticas de juego, como el total de aciertos, el tiempo total jugado, el número de aciertos incorrectos y la cantidad de reinicios realizados, selecciona el ícono de **Trofeo**. Este ícono te llevará a una sección donde se muestran los resultados de tus partidas anteriores.
 
 ## 5. Jugar el juego
