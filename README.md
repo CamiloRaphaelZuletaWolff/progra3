@@ -29,10 +29,11 @@ En la pantalla principal, selecciona Open o ve al menú File > Open....
 Navega hasta el directorio donde clonaste el repositorio.
 
 Selecciona la carpeta principal del proyecto y haz clic en OK.
-En el caso que no puedas clonar con comandos opta por esta opción:
 
+En el caso que no puedas clonar con comandos opta por esta opción:
+Abre Android Studio
 ![Captura de pantalla 2024-12-19 004252](https://github.com/user-attachments/assets/ee7b09f3-a810-4604-99ae-3a340fa20ac5)
-Entras a Get from VCS
+Entra a Get from VCS
 
 Pegas este URL(https://github.com/CamiloRaphaelZuletaWolff/progra3) y TODO LISTO
 
