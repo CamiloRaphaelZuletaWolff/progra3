@@ -63,28 +63,15 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/texto_nivel"
+                android:id="@+id/Recuerdin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nivel"
+                android:text="Recuerdin"
                 android:textAlignment="textStart"
                 android:textSize="35sp"
                 android:textColor="@color/white"
                 android:layout_marginStart="30dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
-
-            <TextView
-                android:id="@+id/numero_nivel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="2"
-                android:textAlignment="textStart"
-                android:textSize="35sp"
-                android:textColor="@color/white"
-                android:layout_marginEnd="30dp"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>
 

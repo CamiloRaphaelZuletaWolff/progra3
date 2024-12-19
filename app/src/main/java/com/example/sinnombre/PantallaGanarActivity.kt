@@ -6,6 +6,9 @@ import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import com.example.sinnombre.databinding.ActivityPantallaganarBinding
 import com.example.sinnombre.PantallaDeInicioActivity
+import com.example.sinnombre.PantallaDeInicioActivity.Companion.ID_PASO_COLUMNA
+import com.example.sinnombre.PantallaDeInicioActivity.Companion.ID_PASO_FILA
+import kotlin.random.Random
 
 class PantallaGanarActivity : AppCompatActivity() {
 
@@ -21,9 +24,17 @@ class PantallaGanarActivity : AppCompatActivity() {
         val botonSiguientenivel: ImageButton = findViewById(R.id.boton_siguiente_nivel)
         botonSiguientenivel.setOnClickListener {
 
-            val intent = Intent(this, PantallaDeInicioActivity::class.java)
+            var fila = Random.nextInt(1, 8)
+            var columna = Random.nextInt(1, 5)
+            while (fila * columna % 2 != 0 || fila == columna) {
+                fila = Random.nextInt(1, 8)
+                columna = Random.nextInt(1, 5)
+            }
+            val intent = Intent(this, PantallaDeJuegoActivity::class.java)
+            intent.putExtra(ID_PASO_FILA, fila)
+            intent.putExtra(ID_PASO_COLUMNA, columna)
             startActivity(intent)
-
+        }
 
             val botonAtras: ImageButton = findViewById(R.id.boton_inicio)
             botonAtras.setOnClickListener {
@@ -32,6 +43,6 @@ class PantallaGanarActivity : AppCompatActivity() {
                 startActivity(intent)
                 finish()
             }
-        }
+
     }
 }
